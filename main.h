@@ -5,6 +5,19 @@
 #include <unistd.h>
 #include <stdef.h>
 
+/**
+ * struct print - struct for printer functions
+ * @p: identifier
+ * @func2: pointer to a printer functions
+ *
+ * Description: struct that stores pointers to a
+ * printer functions.
+ */
+typedef struct {
+    char p;
+    int (*func2)(va_list);
+} print_f;
+
 #define BUFR_SIZE 1024
 
 int _printf(const char *format, ...);
