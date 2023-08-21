@@ -1,31 +1,31 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <starg.h>
 #include <unistd.h>
-#include <stdef.h>
-
+#include <stdarg.h>
+#include <stddef.h>
+#include <stdio.h>
 /**
  * struct print - struct for printer functions
- * @p: identifier
- * @func2: pointer to a printer functions
+ * @speci: identifier
+ * @func: pointer to a printer functions
  *
  * Description: struct that stores pointers to a
  * printer functions.
  */
 typedef struct {
-    char p;
-    int (*func2)(va_list);
-} print_f;
+	const char *speci;
+	int (*func)(va_list);
+} format_info;
 
-#define BUFR_SIZE 1024
+
 
 int _printf(const char *format, ...);
-int handler_specifier(const char *format, va_list total_args, char *bufr, int *index);
-void buffr(const char *buffer, int size);
-int printc(va_list list);
-int print_string(va_list list);
-int print_n(va_list list);
-int (*cmp_func2(const char a))(va_list);
+int (*get_func(const char *format))(va_list);
+int print_str(va_list args);
+int print_char(va_list args);
+int print_pct(va_list args);
+int print_dec(va_list args);
+int print1char(char);
 
 #endif

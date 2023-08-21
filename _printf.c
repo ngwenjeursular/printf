@@ -1,43 +1,56 @@
+#include <stdarg.h>
 #include "main.h"
 
 /**
- * _printf - this is a custom printf function
- * @format: number of arguments in the function
- * Return: number of characters printed (excluding the '\0'
- */
-
+* _printf - produces output according to a format.
+* @format: character string
+* Return: the number of characters printed(excluding '\0')
+*/
 int _printf(const char *format, ...)
 {
-	const char *ptr = format;
-	unsigned int total_chars = 0;
+	int count = 0;
 
-	va_list total_args;
+	va_list args;
+	int (*func)(va_list) = NULL;
 
-	va_start(total_args, format);
+	va_start(args, format);
 
-	if (format == NULL)
-		return (-1);
-	for (; *ptr != '\0'; ptr++)
+	while (*format)
 	{
-		if (*ptr == '%')
+		if (*format == '%' && *(format + 1) != '%')
 		{
-			handler_specifier(ptr, total_args, bufr, &bufr_index);
-			ptr++;
-		}
-		else
-		{
-			bufr[bufr_index] = *ptr;
-			bufr_index++;
-		}
-		if (bufr_index == BUFR_SIZE)
-		{
-			buffr(bufr, bufr_index);
-			bufr_index = 0;
-		}
-	}
-	va_end(total_args);
-	if (bufr_index > 0)
-		buffr(bufr, bufr_index);
+			format++;
+			func = get_func(format);
+			if (*format == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
+			else if (func == NULL)
+			{
+				print1char(*(format - 1));
+				print1char(*format);
+				count += 2;
+			}
+			else
+			{
+				count += func(args);
+			}
+			else if (*format == '%' && *(format + 1) == '%')
+			{
+				format++;
+				print1char('%');
+				count++;
+			}
+			else
+			{
+				print1char(*format);
+				count++;
+			}
 
-	return (bufr_index);
+			format++;
+		}
+		va_end(args);
+		return (count);
+	}
 }
