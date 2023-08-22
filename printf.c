@@ -2,49 +2,50 @@
 #include "main.h"
 
 /**
-* _printf - produces output according to a format.
-* @format: character string
-* Return: the number of characters printed(excluding '\0')
-*/
+ *_printf - prints to output according to format
+ *@format: character string
+ *
+ *Return: number of characters printed(excluding '\0')
+ */
+
 int _printf(const char *format, ...)
 {
-	int count = 0;
-
+	int i = 0, j = 0;
+	int (*func)(va_list);
 	va_list args;
-	int (*func)(va_list) = NULL;
 
 	va_start(args, format);
-
-	while (*format)
+	if (format == NULL || !format[i + 1])
+		return (-1);
+	while (format[i])
 	{
-		if (*format == '%' && *(format + 1) != '%')
+		if (format[i] == '%')
 		{
-			format++;
-			func = get_func(format);
-			if (*format == '\0')
+			if (format[i + 1])
 			{
-				va_end(args);
-				return (-1);
-			} else if (func == NULL)
-			{
-				print1char(*(format - 1));
-				print1char(*format);
-				count += 2;
-			} else
-			{
-				count += func(args);
+				if (format[i + 1] != 'c' && format[i + 1] != 's'
+				&& format[i + 1] != '%' && format[i + 1] != 'd'
+				&& format[i + 1] != 'i')
+				{
+					j += print1char(format[i]);
+					j += print1char(format[i + 1]);
+					i++;
+				}
+				else
+				{
+					func = get_func(&format[i + 1]);
+					j += func(args);
+					i++;
+				}
 			}
-		} else if (*format == '%' && *(format + 1) == '%')
-		{
-			format++;
-			print1char('%');
-			count++;
-		} else
-		{
-			print1char(*format);
-			count++;
 		}
-		format++;
-	} va_end(args);
-	return (count);
+		else
+		{
+			print1char(format[i]);
+			j++;
+		}
+		i++;
+	}
+	va_end(args);
+	return (j);
 }
