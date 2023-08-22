@@ -7,6 +7,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
+
 /**
  * struct func_type - struct for specifier and associated function.
  * @speci: pointer to the specifier string.
