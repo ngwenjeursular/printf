@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <limits.h>
 #include <unistd.h>
 #include <stdarg.h>
 #include <string.h>
@@ -35,9 +36,6 @@ int print_hex(va_list args);
 int print_oct(va_list args);
 int print_uphex(va_list args);
 int print_unt(va_list args);
-char *fill_oct_array(char *bnr, char *oct);
-char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);
-char *fill_binary_array(char *binary, long int int_take, int isneg, int limit);
 int int2binary(unsigned int num);
 int b_handler(va_list args);
 int p_handler(va_list args);

@@ -5,5 +5,6 @@
 *#
 *a.out
 *.swp
+*.test
 # Ignore main file
 *main.c
