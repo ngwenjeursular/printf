@@ -42,4 +42,5 @@ int int2binary(unsigned int num);
 int b_handler(va_list args);
 int p_handler(va_list args);
 void print_addr(void *ptr);
+void write_buff();
 #endif
