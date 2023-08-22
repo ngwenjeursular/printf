@@ -32,25 +32,24 @@ int _printf(const char *format, ...)
 				print1char(*format);
 				count += 2;
 			}
-			else if
+			else
 			{
 				count += func(args);
 			}
-			else if (*format == '%' && *(format + 1) == '%')
-			{
-				format++;
-				print1char('%');
-				count++;
-			}
-			else
-			{
-				print1char(*format);
-				count++;
-			}
-
-			format++;
 		}
-		va_end(args);
-		return (count);
+		else if (*format == '%' && *(format + 1) == '%')
+		{
+			format++;
+			print1char('%');
+			count++;
+		}
+		else
+		{
+			print1char(*format);
+			count++;
+		}
+		format++;
 	}
+	va_end(args);
+	return (count);
 }
