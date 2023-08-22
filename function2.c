@@ -19,15 +19,13 @@ int print_dec(va_list args)
 		count++;
 	}
 
-	do
-	{
+	do {
 		buffer[index++] = '0' + (value % 10);
 		value /= 10;
 		count++;
-	}
-	while (value >0);
+	} while (value > 0);
 
-	for (i = index -1; i >= 0; i--)
+	for (i = index - 1; i >= 0; i--)
 	{
 		print1char(buffer[i]);
 	}

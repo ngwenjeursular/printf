@@ -1,19 +1,22 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <limits.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include <stddef.h>
+#include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 /**
- * struct print - struct for printer functions
- * @speci: identifier
- * @func: pointer to a printer functions
+ * struct func_type - struct for specifier and associated function.
+ * @speci: pointer to the specifier string.
+ * @func: pointer to the function associated with the specifier.
  *
- * Description: struct that stores pointers to a
- * printer functions.
+ * Description: struct that stores pointers to functions for handling
+ * handling different format specifiers.
  */
-typedef struct {
+typedef struct func_type
+{
 	const char *speci;
 	int (*func)(va_list);
 } format_info;

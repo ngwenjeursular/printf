@@ -25,31 +25,26 @@ int _printf(const char *format, ...)
 			{
 				va_end(args);
 				return (-1);
-			}
-			else if (func == NULL)
+			} else if (func == NULL)
 			{
 				print1char(*(format - 1));
 				print1char(*format);
 				count += 2;
-			}
-			else
+			} else
 			{
 				count += func(args);
 			}
-		}
-		else if (*format == '%' && *(format + 1) == '%')
+		} else if (*format == '%' && *(format + 1) == '%')
 		{
 			format++;
 			print1char('%');
 			count++;
-		}
-		else
+		} else
 		{
 			print1char(*format);
 			count++;
 		}
 		format++;
-	}
-	va_end(args);
+	} va_end(args);
 	return (count);
 }
