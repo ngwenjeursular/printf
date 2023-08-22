@@ -4,6 +4,6 @@
 *~
 *#
 *a.out
-
+*.swp
 # Ignore main file
 *main.c
