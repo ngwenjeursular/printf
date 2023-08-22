@@ -1,6 +1,8 @@
 # 0x11 C Printf project
 ## This is a Group project by two people
 
+We are trying to replicate the standard printf function without using the stdio.h file
+
 **This code follows the betty documentation style**
 
 ## the code here will be compiled like this:
