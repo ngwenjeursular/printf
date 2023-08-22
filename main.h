@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+#define BUFR_SIZE 1024
+
 /**
  * struct func_type - struct for specifier and associated function.
  * @speci: pointer to the specifier string.
