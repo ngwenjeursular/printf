@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 				print1char(*format);
 				count += 2;
 			}
-			else
+			else if
 			{
 				count += func(args);
 			}

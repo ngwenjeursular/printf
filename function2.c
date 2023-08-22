@@ -9,6 +9,8 @@ int print_dec(va_list args)
 {
 	int value = va_arg(args, int);
 	int count = 0, i;
+	char buffer[20];
+	int index = 0;
 
 	if (value < 0)
 	{
@@ -16,8 +18,6 @@ int print_dec(va_list args)
 		value = -value;
 		count++;
 	}
-	char buffer[20];
-	int index = 0;
 
 	do
 	{
@@ -29,7 +29,7 @@ int print_dec(va_list args)
 
 	for (i = index -1; i >= 0; i--)
 	{
-		print1char(buffe[i]);
+		print1char(buffer[i]);
 	}
 
 	return (count);
