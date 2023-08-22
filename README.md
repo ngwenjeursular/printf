@@ -23,4 +23,4 @@ The language used here is c. Your only requirements will be to have a gcc compil
 
 
 ## Task 4:
-[local buffer](buffer_printf.c)
+[local buffer](main.h)
