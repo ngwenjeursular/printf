@@ -1,34 +1,90 @@
 #include "main.h"
+/**
+ * print_int - prints integer
+ * @args: argument to print
+ * Return: number of characters printed
+ */
+int print_int(va_list args)
+{
+	int k = va_arg(args, int);
+	int num, last = k % 10, digit, exp = 1;
+	int  i = 1;
+
+	k = k / 10;
+	num = k ;
+
+	if (last < 0)
+	{
+		print1char('-');
+		num = -num;
+		k = -k;
+		last = -last;
+		i++;
+	}
+	if (num > 0)
+	{
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = k;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			print1char(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
+	}
+	print1char(last + '0');
+
+	return (i);
+}
 
 /**
  * print_dec - prints decimal
- * @args: the argument decimal
- * Return: counter
+ * @args: argument to print
+ * Return: number of characters printed
  */
+
 int print_dec(va_list args)
 {
-	int value = va_arg(args, int);
-	int count = 0, i;
-	char buffer[20];
-	int index = 0;
+	int k = va_arg(args, int);
+	int num, last = k % 10, digit;
+	int  d = 1;
+	int exp = 1;
 
-	if (value < 0)
+	k = k / 10;
+	num = k;
+
+	if (last < 0)
 	{
 		print1char('-');
-		value = -value;
-		count++;
+		num = -num;
+		k = -k;
+		last = -last;
+		d++;
 	}
-
-	do {
-		buffer[index++] = '0' + (value % 10);
-		value /= 10;
-		count++;
-	} while (value > 0);
-
-	for (i = index - 1; i >= 0; i--)
+	if (num > 0)
 	{
-		print1char(buffer[i]);
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = k;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			print1char(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			d++;
+		}
 	}
+	print1char(last + '0');
 
-	return (count);
+	return (d);
 }

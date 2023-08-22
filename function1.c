@@ -27,7 +27,7 @@ int print_str(va_list args)
 	char *str = va_arg(args, char *);
 
 	if (str == NULL)
-		str = "(null)";
+		str = "NULL";
 	for (j = 0; str[j]; j++)
 	{
 		print1char(str[j]);
