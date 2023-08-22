@@ -88,3 +88,72 @@ int print_dec(va_list args)
 
 	return (d);
 }
+
+/**
+ * int2binary - helper func to convert int to binary
+ * @num: number to be converted
+ * Return: number in binary
+ */
+int int2binary(unsigned int num)
+{
+	if (num == 0)
+	{
+		print1char('0');
+		return (1);
+	}
+	else if (num == 1)
+	{
+		print1char('1');
+		return (1);
+	}
+	else
+	{
+		int digits_ptd = int2binary(num / 2);
+
+		print1char('0' + (num % 2));
+		return (digits_ptd + 1);
+	}
+}
+
+/**
+ * print_addr - helper func to print addr
+ * @ptr: pointer to address
+ * Return: Nothing
+ */
+void print_addr(void *ptr)
+{
+	unsigned long address = (unsigned long)ptr;
+	char *address_str;
+	int index = 0;
+	int i;
+
+	int address_len = 2 + (int)(sizeof(unsigned long) * 2);
+
+	address_str = (char *)malloc(address_len + 1);
+
+	if (address_str == NULL)
+	{
+		return;
+	}
+
+
+	while (address > 0)
+	{
+		int digit = address % 16;
+
+		if (digit < 10)
+			address_str[index++] = '0' + digit;
+		else
+			address_str[index++] = 'a' + (digit - 10);
+		address /= 16;
+	}
+	address_str[index] = '\0';
+
+	print1char('0');
+	print1char('x');
+
+	for (i = index - 1; i >= 0; i--)
+		print1char(address_str[i]);
+
+	free(address_str);
+}

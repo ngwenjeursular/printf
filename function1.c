@@ -45,3 +45,29 @@ int print_pct(va_list args)
 	(void)args;
 	return (write(1, "%", 1));
 }
+
+/**
+ * b_handler - handles the conversion specf %b
+ * @args: arguments passed
+ * Return: a function that converts int to binary
+ */
+int b_handler(va_list args)
+{
+	unsigned int num = va_arg(args, unsigned int);
+
+	return (int2binary(num));
+}
+
+/**
+ * p_handler - handles the conversion specf %p
+ * @args: arguments passed
+ * Return: a helper function to print addr
+ */
+int p_handler(va_list args)
+{
+	void *ptr = va_arg(args, void *);
+
+	print_addr(ptr);
+
+	return (0);
+}

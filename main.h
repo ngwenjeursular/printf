@@ -31,6 +31,7 @@ int print_pct(va_list args);
 int print_dec(va_list args);
 int print_int(va_list args);
 int print1char(char);
+<<<<<<< HEAD
 int print_hex(va_list args);
 int print_oct(va_list args);
 int print_uphex(va_list args);
@@ -38,4 +39,11 @@ int print_unt(va_list args);
 char *fill_oct_array(char *bnr, char *oct);
 char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);
 char *fill_binary_array(char *binary, long int int_in, int isneg, int limit);
+=======
+int int2binary(unsigned int num);
+int b_handler(va_list args);
+int p_handler(va_list args);
+void print_addr(void *ptr);
+
+>>>>>>> 60c2c02bf745645fbcb4614075b639b2b67f93a1
 #endif
