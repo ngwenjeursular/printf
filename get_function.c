@@ -13,6 +13,7 @@ int (*get_func(const char *format))(va_list)
 		{"%", print_pct},
 		{"d", print_dec},
 		{"i", print_dec},
+		{"b", b_handler},
 		{NULL, NULL}
 
 	};

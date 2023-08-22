@@ -32,5 +32,7 @@ int print_pct(va_list args);
 int print_dec(va_list args);
 int print_int(va_list args);
 int print1char(char);
+int int2binary(unsigned int num);
+int b_handler(va_list args);
 
 #endif

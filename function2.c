@@ -88,3 +88,29 @@ int print_dec(va_list args)
 
 	return (d);
 }
+
+/**
+ * int2binary - helper func to convert int to binary
+ * @num: number to be converted
+ * Return: number in binary
+ */
+int int2binary(unsigned int num)
+{
+	if (num == 0)
+	{
+		print1char('0');
+		return (1);
+	}
+	else if (num == 1)
+	{
+		print1char('1');
+		return (1);
+	}
+	else
+	{
+		int digits_ptd = int2binary(num / 2);
+
+		print1char('0' + (num % 2));
+		return (digits_ptd + 1);
+	}
+}
