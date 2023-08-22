@@ -26,5 +26,5 @@ int (*get_func(const char *format))(va_list)
 			return (formats[j].func);
 		}
 	}
-	return NULL;
+	return (NULL);
 }

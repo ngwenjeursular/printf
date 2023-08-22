@@ -11,7 +11,7 @@ int print_int(va_list args)
 	int  i = 1;
 
 	k = k / 10;
-	num = k ;
+	num = k;
 
 	if (last < 0)
 	{
