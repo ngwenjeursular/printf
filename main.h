@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <limits.h>
 #include <unistd.h>
 #include <stdarg.h>
 #include <string.h>
@@ -42,4 +43,5 @@ int b_handler(va_list args);
 int p_handler(va_list args);
 void print_addr(void *ptr);
 void write_buff();
-#endif
+
+#endif /*MAIN_H*/
