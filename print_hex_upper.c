@@ -4,12 +4,12 @@ int is_lowercase(char);
 char *string_to_upper(char *);
 
 /**
-* print_hex_upper - print an unsigned integer as an uppercase hexadecimal
+* print_hex_decimal_upper - print an unsigned integer as an uppercase hexadecimal
 * @list: The va_list containing the arguments.
 *
 * Return: The size characters printed.
 */
-int print_hex_upper(va_list list)
+int print_hexadecimal_upper(va_list list)
 {
 	char *p_buff;
 	int size;

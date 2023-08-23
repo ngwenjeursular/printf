@@ -55,7 +55,7 @@ int b_handler(va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int);
 
-	return (int2binary(num));
+	return (print_binary(num));
 }
 
 /**

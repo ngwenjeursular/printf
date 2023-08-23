@@ -8,14 +8,14 @@
 int (*get_func(const char *format))(va_list)
 {
 	format_info formats[] = {
-		{"c", print_char},
-		{"s", print_str},
-		{"%", print_pct},
-		{"d", print_dec},
-		{"i", print_dec},
-		{"b", b_handler},
-		{"p", p_handler},
-		{NULL, NULL}
+		{'c', print_char},
+		{'s', print_str},
+		{'%', print_pct},
+		{'d', print_dec},
+		{'i', print_dec},
+		{'b', b_handler},
+		{'p', p_handler},
+		{0, NULL}
 
 	};
 
@@ -23,7 +23,7 @@ int (*get_func(const char *format))(va_list)
 
 	for (j = 0; formats[j].speci; j++)
 	{
-		if (*format == *(formats[j].speci))
+		if (*format == formats[j].speci)
 		{
 			return (formats[j].func);
 		}

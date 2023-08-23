@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
-* print_hex_low - print the unsigned integer as a lowercase hexadecimal.
+* print_hexadecimal_lower - print the unsigned integer as a lowercase hexadecimal.
 * @list: the va_list containing the arguments.
 *
 * Return: The size of characters printed.
 */
-int print_hex_low(va_list list)
+int print_hexadecimal_lower(va_list list)
 {
 	char *p_buff;
 	int size;
