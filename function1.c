@@ -27,7 +27,7 @@ int print_str(va_list args)
 	char *str = va_arg(args, char *);
 
 	if (str == NULL)
-		str = "NULL";
+		str = "(null)";
 	for (j = 0; str[j]; j++)
 	{
 		print1char(str[j]);
@@ -70,20 +70,4 @@ int p_handler(va_list args)
 	print_addr(ptr);
 
 	return (0);
-}
-
-/**
- * write_buff - function that writes into a buffer
- * Return: Nothing
- */
-void write_buff()
-{
-	static char bufr[BUFR_SIZE];
-	static int bufr_index = 0;
-
-	if (bufr_index > 0)
-	{
-		write(STDOUT_FILENO, bufr, bufr_index);
-		bufr_index = 0;
-	}
 }
