@@ -25,22 +25,34 @@ typedef struct func_type
 } format_info;
 
 
+/*utility*/
+int _strlen(const char *);
+int print(char *);
+char *itoa(long int, int);
 
+/*printf.c*/
 int _printf(const char *format, ...);
 int (*get_func(const char *format))(va_list);
+
+/*printers*/
 int print_str(va_list args);
 int print_char(va_list args);
 int print_pct(va_list args);
 int print_dec(va_list args);
 int print_int(va_list args);
-int print1char(char);
-int print_hex(va_list args);
-int print_oct(va_list args);
-int print_uphex(va_list args);
-int print_unt(va_list args);
+int print_hex_upper(va_list list);
+int print_octal(va_list list);
+int print_hex_lower(va_list list);
+int print_unsigned(va_list list);
 int int2binary(unsigned int num);
+
+/*handlers */
+int print1char(char);
 int b_handler(va_list args);
 int p_handler(va_list args);
 void print_addr(void *ptr);
+
+/* print1char.c */
+int print1char(char);
 void write_buff(void);
 #endif /*MAIN_H*/
