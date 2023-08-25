@@ -19,7 +19,7 @@
  */
 typedef struct func_type
 {
-	char *speci;
+	char speci;
 	int (*func)(va_list);
 } format_info;
 
@@ -31,7 +31,7 @@ char *itoa(long int, int);*/
 
 /*printf.c*/
 int _printf(const char *format, ...);
-int (*get_func(const char *specifier))(va_list);
+int (*get_func(char specifier))(va_list);
 
 /*printers*/
 int print_str(va_list args);

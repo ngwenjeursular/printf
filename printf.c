@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 					i++;
 				} else
 				{
-					func = get_func(format + i + 1);
+					func = get_func(format[i + 1]);
 					if (func)
 					{
 						j += func(args);

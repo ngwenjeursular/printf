@@ -5,30 +5,27 @@
  * @specifier: a character to check
  * Return: a pointer to the function
  */
-int (*get_func(const char *specifier))(va_list)
+int (*get_func(char specifier))(va_list)
 {
 	format_info formats[] = {
-		{"c", print_char},
-		{"s", print_str},
-		{"%", print_pct},
-		{"d", print_dec},
-		{"i", print_dec},
-		{"b", b_handler},
-		{"p", p_handler},
-		{NULL,NULL},
-		
+		{'c', print_char},
+		{'s', print_str},
+		{'%', print_pct},
+		{'d', print_dec},
+		{'i', print_dec},
+		{'b', b_handler},
+		{'p', p_handler},
 
 	};
 
-	int i;
+	size_t  i;
 
-	for (i = 0; formats[i].speci != NULL; i++)
+	for (i = 0; i < sizeof(formats) / sizeof(formats[0]); i++)
 	{
-		if (strcmp(formats[i].speci, specifier) == 0)
+		if (formats[i].speci == specifier)
 		{
 			return (formats[i].func);
 		}
 	}
-	/*Return a default functionm or handler error*/
 	return (NULL);
 }
