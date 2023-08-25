@@ -9,43 +9,40 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0;
+	int i = 0, printed_chars = 0;
 	int (*func)(va_list);
 	va_list args;
 
 	va_start(args, format);
-	if (format == NULL || !format[i + 1])
-		return (-1);
-	while (format[i])
+
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1])
+			i++; /* move past the '%' */
+
+			/* Handle conversion specifiers */
+			func  = get_func(format + i);
+
+			if (func != NULL)
 			{
-				if (format[i + 1] == '%')
-				{
-					/* print  a literal '%' */
-					j += print1char('%');
-					i++;
-				} else
-				{
-					func = get_func(format[i + 1]);
-					if (func)
-					{
-						j += func(args);
-						i++;
-					} else
-					{
-						/*print the unsupported specifier as is*/
-						j += print1char(format[i]);
-					}
-				}
+				printed_chars += func(args);
 			}
-		} else
+			else
+			{
+				/* Handle unsupported specifier*/
+				print1char('%');
+				print1char(format[i]);
+				printed_chars += 2;
+			}
+		}
+		else
 		{
-			j += print1char(format[i]);
-		} i++;
+			print1char(format[i]);
+			printed_chars++;
+		}
 	}
 	va_end(args);
-	return (j);
+
+	return (printed_chars);
 }

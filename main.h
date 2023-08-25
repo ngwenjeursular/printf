@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_
+#define _MAIN_
 
 #include <unistd.h>
 #include <stdarg.h>
@@ -19,7 +19,7 @@
  */
 typedef struct func_type
 {
-	char speci;
+	char *speci;
 	int (*func)(va_list);
 } format_info;
 
@@ -31,7 +31,7 @@ char *itoa(long int, int);*/
 
 /*printf.c*/
 int _printf(const char *format, ...);
-int (*get_func(const char specifier))(va_list);
+int (*get_func(const char *specifier))(va_list);
 
 /*printers*/
 int print_str(va_list args);
@@ -39,18 +39,18 @@ int print_char(va_list args);
 int print_pct(va_list args);
 int print_dec(va_list args);
 int print_int(va_list args);
+int b_handler(va_list args);
+int p_handler(va_list args);
+int print_binary(unsigned int num);
+void print_addr(void *ptr);
 /*int print_hexadecimal_upper(va_list list);
 int print_octal(va_list list);
 int print_hexadecimal_lower(va_list list);
 int print_unsigned(va_list list);*/
-int print_binary(unsigned int num);
 
 /*handler.c */
 /*int handler(const char *, va_list);
 int percent_handler(const char *, va_list, int *)*/
-int b_handler(va_list args);
-int p_handler(va_list args);
-void print_addr(void *ptr);
 
 /* print1char.c */
 int print1char(char);
