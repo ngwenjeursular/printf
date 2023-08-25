@@ -32,7 +32,7 @@ char *itoa(long int, int);
 
 /*printf.c*/
 int _printf(const char *format, ...);
-int (*get_func(const char *format))(va_list);
+int (*get_func(const char specifier))(va_list);
 
 /*printers*/
 int print_str(va_list args);

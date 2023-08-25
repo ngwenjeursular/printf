@@ -23,28 +23,29 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1])
 			{
-				if (format[i + 1] != 'c' && format[i + 1] != 's'
-				&& format[i + 1] != '%' && format[i + 1] != 'd'
-				&& format[i + 1] != 'i' && format[i + 1] != 'b' && format[i + 1] != 'p')
+				if (format[i + 1] == '%')
 				{
-					j += print1char(format[i]);
-					j += print1char(format[i + 1]);
+					/* print  a literal '%' */
+					j += print1char('%');
 					i++;
-				}
-				else
+				} else
 				{
-					func = get_func(&format[i + 1]);
-					j += func(args);
-					i++;
+					func = get_func(format[i + 1]);
+					if (func)
+					{
+						j += func(args);
+						i++;
+					} else
+					{
+						/*print the unsupported specifier as is*/
+						j += print1char(format[i]);
+					}
 				}
 			}
-		}
-		else
+		} else
 		{
-			print1char(format[i]);
-			j++;
-		}
-		i++;
+			j += print1char(format[i]);
+		} i++;
 	}
 	va_end(args);
 	return (j);

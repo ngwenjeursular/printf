@@ -2,10 +2,10 @@
 
 /**
  * get_func - check for valid specifier
- * @format: a character to check
+ * @specifier: a character to check
  * Return: a pointer to the function
  */
-int (*get_func(const char *format))(va_list)
+int (*get_func(char specifier))(va_list)
 {
 	format_info formats[] = {
 		{'c', print_char},
@@ -15,15 +15,15 @@ int (*get_func(const char *format))(va_list)
 		{'i', print_dec},
 		{'b', b_handler},
 		{'p', p_handler},
-		{0, NULL}
+		
 
 	};
 
-	int j;
+	size_t j;
 
-	for (j = 0; formats[j].speci; j++)
+	for (j = 0; j < sizeof(formats) / sizeof(formats[0]); j++)
 	{
-		if (*format == formats[j].speci)
+		if (formats[j].speci == specifier)
 		{
 			return (formats[j].func);
 		}
