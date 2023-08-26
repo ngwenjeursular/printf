@@ -23,12 +23,6 @@ typedef struct func_type
 	int (*func)(va_list);
 } format_info;
 
-
-/*utility*/
-/*int _strlen(const char *);
-int print(char *);
-char *itoa(long int, int);*/
-
 /*printf.c*/
 int _printf(const char *format, ...);
 int (*get_func(char specifier))(va_list);
@@ -43,14 +37,6 @@ int b_handler(va_list args);
 int p_handler(va_list args);
 int print_binary(unsigned int num);
 void print_addr(void *ptr);
-/*int print_hexadecimal_upper(va_list list);
-int print_octal(va_list list);
-int print_hexadecimal_lower(va_list list);
-int print_unsigned(va_list list);*/
-
-/*handler.c */
-/*int handler(const char *, va_list);
-int percent_handler(const char *, va_list, int *)*/
 
 /* print1char.c */
 int print1char(char);
